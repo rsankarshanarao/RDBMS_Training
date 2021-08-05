@@ -1,0 +1,5 @@
+CREATE TABLE STATEMENT SYNTAX
+
+CREATE TABLE pettable(pet_id INTEGER,
+		    pet_name VARCHAR(14),
+                    pet_age FLOAT)

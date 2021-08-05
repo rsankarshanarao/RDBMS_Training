@@ -1,0 +1,122 @@
+Creating PET_TYPE_TABLE
+
+CREATE TABLE PET_TYPE_TABLE(
+	PET_TYPE_ID INT NOT NULL,
+        PET_TYPE VARCHAR(15),
+        CONSTRAINT PET_TYPE_TABLE_PRIMARY_KEY PRIMARY KEY (PET_TYPE_ID));
+
+-----------------------------------------------------------------------------------------------------------------
+
+Creating OWNER_TABLE
+
+CREATE TABLE OWNER_TABLE(
+	OWNER_ID INT NOT NULL,
+        OWNER_NAME VARCHAR(15),
+        CONSTRAINT OWNER_TABLE_PRIMARY_KEY PRIMARY KEY (OWNER_ID));
+
+-----------------------------------------------------------------------------------------------------------------
+
+Creating PROCEDURES_TABLE
+
+CREATE TABLE PROCEDURES_TABLE(
+	PROC_ID INT NOT NULL,
+        PROC_DESC VARCHAR(100),
+        CONSTRAINT PROCEDURES_TABLE_PRIMARY_KEY PRIMARY KEY (PROC_ID));
+
+-----------------------------------------------------------------------------------------------------------------
+
+Creating PROC_DATE_MAP_TABLE
+
+CREATE TABLE PROC_DATE_MAP_TABLE(
+	PDM_ID INT NOT NULL,
+        PROC_ID INT NOT NULL,
+        PROC_DATE DATE,
+	PET_ID INT NOT NULL,
+        CONSTRAINT PROC_DATE_MAP_TABLE_PRIMARY_KEY PRIMARY KEY (PDM_ID),
+        CONSTRAINT PROC_DATE_AMP_TABLE_FOREIGN_KEY FOREIGN KEY (PROC_ID) REFERENCES PROCEDURES_TABLE(PROC_ID),
+	CONSTRAINT PROC_DATE_MAP_TABLE_FOREIGN_KEY FOREIGN KEY (PET_ID) REFERENCES PET_TABLE (PET_ID));
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+Creating PET_TABLE
+
+CREATE TABLE PET_TABLE(
+    PET_ID INT NOT NULL,
+    PET_NAME VARCHAR(20),
+    PET_AGE INT,
+    PET_TYPE_ID INT NOT NULL,
+    OWNER_ID INT NOT NULL,
+    CONSTRAINT PET_TABLE_PRIMARY_KEY PRIMARY KEY (PET_ID),
+    CONSTRAINT PET_TABLE_FOREIGN_KEY FOREIGN KEY (PET_TYPE_ID) REFERENCES PET_TYPE_TABLE(PET_TYPE_ID),
+    CONSTRAINT PET_TABLE_FOREIGN_KEY FOREIGN KEY (OWNER_ID) REFERENCES OWNER_TABLE(OWNER_ID));
+
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+
+Inserting Data to Procedures Table
+
+INSERT INTO PROCEDURES_TABLE 
+VALUES 	(1, 'RABIES VACCINATION'),
+	(5, 'HEART WORM TEST'),
+        (8, 'TETANUS VACCINATION'),
+        (10, 'EXAMINE and TREAT WOUND'),
+        (12, 'EYE WASH'),
+        (20, 'ANNUAL CHECK UP');
+        
+-----------------------------------------------------------------------------------------------------------------
+
+Inserting Data to PET_TYPE_TABLE
+
+INSERT INTO PET_TYPE_TABLE
+VALUES 	(1, 'DOG'),
+	(2, 'CAT'),
+        (3, 'BIRD');
+			
+-----------------------------------------------------------------------------------------------------------------
+
+Inserting Data to Owner Table
+
+INSERT INTO OWNER_TABLE
+VALUES 	(1, 'SAM COOK'),
+	(2, 'TERRY KIM'),
+        (3, 'MAC'),
+        (4, 'SANJOSE');
+
+-----------------------------------------------------------------------------------------------------------------
+
+Inserting Data to PET_TABLE
+
+INSERT INTO PET_TABLE
+VALUES 	(246,'ROVER',12,1,1),
+	(298,'SPOT',2,1,2),
+        (341,'MORRIS',4,2,1),
+        (519,'TWEEDY',2,3,2),
+        (444,'SHUMPI',5,3,3),
+        (222,'MILO',10,1,4);
+
+-----------------------------------------------------------------------------------------------------------------
+
+Inserting Data into PROC_DATE_MAP_TABLE
+
+INSERT INTO PROC_DATE_MAP_TABLE
+VALUES 	(1,1,'13-JAN-02',246),
+	(2,10,'27-MAR-02',246),
+	(3,5,'02-APR-02',246),
+        (4,8,'21-JAN-02',298),
+        (5,5,'10-MAR-02',298),
+        (6,1,'23-JAN-01',341),
+        (7,1,'13-JAN-02',341),
+        (8,20,'30-APR-02',519),
+        (9,12,'30-APR-02',519),
+        (10,20,'30-AUG-02',444),
+        (11,12,'30-AUG-02',444),
+        (12,1,'13-FEB-03',222),
+        (13,10,'27-MAR-03',222),
+        (14,5,'12-APR-03',222);
+        
+-----------------------------------------------------------------------------------------------------------------
+			
+							
+							
+							
