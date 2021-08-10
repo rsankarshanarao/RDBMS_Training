@@ -1,0 +1,22 @@
+SANKARSHANA RAO R
+
+
+1.
+SELECT p.ProductName AS 'PRODUCTS',c.CategoryName AS 'CATEGORY NAME'
+FROM Products p
+JOIN Suppliers s
+ON p.SupplierID = s.SupplierID
+JOIN Categories c
+ON p.CategoryID = c.CategoryID
+WHERE s.SupplierName LIKE 'Leka Trading'
+
+
+2.
+SELECT p.ProductName,SUM(o.Quantity) AS QUANTITY
+FROM OrderDetails o
+JOIN Products p
+ON o.ProductID = p.ProductID
+GROUP BY o.ProductID
+ORDER BY QUANTITY DESC
+LIMIT 1
+

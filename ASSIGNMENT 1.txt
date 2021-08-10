@@ -1,0 +1,207 @@
+ASSIGNMENT  1
+
+1.Write a query to list all the employees who are working as clerk
+
+SELECT ename,job
+FROM emp
+WHERE job LIKE 'manager'
+
+
+2.Write a query to list the employees who are working as clerks or managers
+
+SELECT ename
+FROM emp
+WHERE job LIKE 'manager' OR 'Clerk'
+
+3.Write a query to get the current date
+
+
+4.Write a query to list the employees whose salaries are within the range of 500 and 1000
+
+SELECT ename
+FROM emp
+WHERE sal BETWEEN 500 AND 1000
+
+5.Write a query to list the employees who have joined in the month of December
+
+SELECT ename
+FROM emp
+WHERE hiredate BETWEEN  '1-dec' AND '31-dec'
+    
+6.Write a query to list the employees whose salaries are not within  the range of 1000 and 2500
+
+SELECT ename
+FROM emp
+WHERE sal BETWEEN 1000 AND 2500
+
+7.Write a query who are getting 800, 950, 3000,5000
+
+SELECT ename
+FROM emp
+WHERE sal IN('800','950','3000','5000')
+
+8.To list all the employees whose names are having ‘L’ as second character 
+
+SELECT ename
+FROM emp
+WHERE ename LIKE '_L%'
+
+9.To list all the employees whose names are having ‘D’ as last character 
+
+SELECT ename
+FROM emp
+WHERE ename LIKE '%D'
+
+10.To list all the employees whose names are having just 5 characters as length? 
+
+SELECT ename
+FROM emp
+WHERE ename LIKE '_____'
+
+11.To list all the employees whose names are starting with ‘T’ and ending with ‘R’ 
+
+SELECT ename
+FROM emp
+WHERE ename LIKE 't%r'
+
+12.Display those employees who's name contains "A"?
+
+SELECT ename
+FROM emp
+WHERE ename LIKE '%a%'
+
+13.Display those employee who joined the company before 19th of the month?
+
+SELECT ename
+FROM emp
+WHERE hiredate BETWEEN  '1-dec' AND '19-dec'
+
+14.What is the employee number of 'James'
+
+SELECT empno
+FROM emp
+WHERE ename LIKE 'james'
+
+
+15.What is the salary of 'king'?
+
+SELECT sal
+FROM emp
+WHERE ename LIKE 'king'
+
+
+16.Who is the President for organization?
+
+SELECT ename
+FROM emp
+WHERE job LIKE 'president'
+
+17.List all details of all the managers?
+
+SELECT empno,ename,job,mgr,hiredate,sal,comm,deptno
+FROM emp
+WHERE job LIKE 'manager'
+
+18.Give employee details for employees drawing commission?
+
+SELECT ename
+FROM emp
+WHERE comm NOT LIKE 'null'
+
+19.List employees who joined before april-1981?
+
+SELECT count(*)
+FROM emp
+WHERE hiredate <  1-april-81
+
+
+20.What is the salary of following: 
+King, Blake, Ford, Smith
+
+SELECT ENAME,SAL
+FROM EMP
+WHERE ENAME IN('KING','BLAKE','FORD','SMITH')
+
+21.Who is drawing salary less than 3500
+
+SELECT ename
+FROM emp
+WHERE sal<3500
+
+22.List the details of all the clerks
+
+SELECT empno,ename,job,mgr,hiredate,sal,comm,deptno
+FROM emp
+WHERE job LIKE 'clerk'
+
+23.what is the annual salary for each the employees
+
+SELECT empno,ename,sal,sal*12
+FROM emp
+
+24.if there is a hike in monthly salary by 20% for ford, what will be his annual Salary
+
+SELECT empno,ename,sal,sal+(20*sal)/100
+FROM emp
+WHERE ename LIKE 'ford'
+
+25.What is the total salary for each department
+
+SELECT empno,ename,sal,sal*12
+FROM emp
+
+26.Who is drawing the lowest salary in dept 10
+
+SELECT empno
+FROM jobhist
+WHERE deptno LIKE '10'
+
+27.What is the average salary for Managers
+
+SELECT round(avg(sal),2) AS 'average salary of managers'
+FROM emp
+WHERE job LIKE 'man%'
+
+28.What is the total salary for salesman
+
+SELECT SUM(sal) AS 'total salary of salesman'
+FROM emp
+WHERE job LIKE 'sale%'
+
+29.Which department is having the lowest average salary?
+
+SELECT deptno,avg(sal)
+FROM emp
+WHERE sal in(select min(sal)
+           from emp
+           group by deptno)
+
+30.How many persons are in each role
+
+SELECT job,count(*)
+FROM emp
+GROUP BY 1
+
+31.What is the highest salary among analyst
+
+SELECT MAX(sal)
+FROM emp
+WHERE job LIKE 'analyst'
+
+32.What is the highest commission paid
+
+SELECT MAX(COMM)
+FROM emp
+
+33.How many departments are there
+
+SELECT COUNT(DISTINCT(dname)) AS 'NO OF DEPARTMENTS'
+FROM dept
+
+34.List the names in which 3rd  character is L
+
+SELECT ename
+FROM emp
+WHERE ename  LIKE '__L%'
+
+                                                                   

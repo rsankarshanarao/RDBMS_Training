@@ -1,0 +1,128 @@
+SQL Assignment No.1
+
+1.Show the structure of the DEPT table. Select all the data from the Dept table.
+
+SELECT * 
+FROM dept
+
+
+2.Show the structure of the EMP table. Create a query to display the name, job, hiredate and employee number.
+
+SELECT ename AS NAME, job AS JOB, hiredate AS HIREDATE, empno AS EMPLOYEE_NUM
+FROM emp
+
+
+3.Display the employee name, job, monthly and annual salary with appropriate column titles.
+
+SELECT ename AS NAME, job AS JOB, sal AS MONTHLY_SAL, sal*12 AS ANNUAL_SAL
+FROM emp
+
+
+4.Display the name concatenated with the job, separated by a comma and space, and the name the column Employee and Title.
+
+SELECT ename||', '||job AS "Employee And Title"
+FROM emp
+
+
+5.Display unique jobs from the emp table.
+
+SELECT job AS UNIQUE_JOBS
+FROM emp
+GROUP BY job
+
+
+6.Display the name and salary of employees earning more than 2850.
+
+SELECT ename, sal
+FROM emp
+WHERE sal > 2850
+
+
+7.Create a query to display the employee name and department number for employee SMITH.
+
+SELECT ename, deptno
+FROM emp
+WHERE ename LIKE 'SMITH'
+
+
+8.Display the employee name, job and start date of employees hired between February 20, 1981 and May 1, 1981. Order the query in ascending order of start date.
+
+
+9.Display the employee name and department number of all employees in departments 10 and 30 in alphabetical order by name.
+
+SELECT ename, deptno
+FROM emp
+WHERE deptno IN (10,30)
+ORDER BY ename
+
+
+10.Display the name and hiredate of every employee who was hired in 1982.
+
+SELECT ename, hiredate
+FROM emp
+WHERE hiredate LIKE '%82%'
+
+
+11.Display the name and title of all employees who do not have a manager.
+
+SELECT ename, job
+FROM emp
+WHERE mgr IS NULL
+
+
+12.Write a query to display the current date. Label the column Date.
+
+SELECT DATE('now') AS DATE
+
+
+13.Display the employees who were hired before their managers.
+
+SELECT e.ename,e.hiredate AS EMPLOYEE_DATE,m.hiredate AS MANAGER_DATE
+FROM emp e, emp m 
+WHERE e.mgr = m.empno
+AND  CAST(e.hiredate AS DATE) < CAST(m.hiredate AS DATE)
+
+14.Determine the number of managers without listing them.
+
+SELECT COUNT(ename)
+FROM emp
+WHERE job LIKE 'MANAGER'
+
+
+15.List employee details working in departments 20,30 & 40.
+
+SELECT *
+FROM emp
+WHERE deptno IN (20,30,40)
+
+
+16.List of employees whose names start with T and end with R.
+
+SELECT *
+FROM emp
+WHERE ename LIKE 't%r'
+
+
+17.List the name and hiredate of the employee in department 30.
+
+SELECT ename,hiredate
+FROM emp
+WHERE deptno IS 30
+
+
+18.Display the hiredate in emp table formatted as ‘mm/dd/yy’.
+
+SELECT ename, STRFTIME('%m/%d/%Y', CAST(hiredate AS DATE) ) AS DATE
+FROM emp
+
+
+19.Retrieve the analysts’ record with the hiredate formatted as ‘the 3rd of Decemeber, 1984’.
+
+
+
+20.List the names of all employees whose hiredate anniversary is in the month of December.
+
+SELECT ename, hiredate
+FROM emp
+WHERE hiredate LIKE '%DEC%'
+
