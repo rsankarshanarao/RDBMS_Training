@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\Day02_Exc1\\Day02_Exc1\\Day02_Exc1.csproj",
+      "projectUniqueName": "D:\\Git Repository\\C#_Training\\Day02_Exc1\\Day02_Exc1\\Day02_Exc1.csproj",
       "projectName": "Day02_Exc1",
-      "projectPath": "C:\\Users\\Admin\\source\\repos\\Day02_Exc1\\Day02_Exc1\\Day02_Exc1.csproj",
+      "projectPath": "D:\\Git Repository\\C#_Training\\Day02_Exc1\\Day02_Exc1\\Day02_Exc1.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\source\\repos\\Day02_Exc1\\Day02_Exc1\\obj\\",
+      "outputPath": "D:\\Git Repository\\C#_Training\\Day02_Exc1\\Day02_Exc1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

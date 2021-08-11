@@ -5,34 +5,59 @@ using System;
 
 namespace Day02_Exc1
 {
+    /// <summary>
+    /// Class Circle
+    /// </summary>
     class Circle
     {
         double radius;
-
+        /// <summary>
+        /// Constructor to Create a circle with radius value 0
+        /// </summary>
         public Circle()
         {
             radius = 0;
         }
+        /// <summary>
+        /// Constructor to create a circle object with radius input
+        /// </summary>
+        /// <param name="rad">Radius</param>
         public Circle(double rad)
         {
             radius = rad;
         }
 
+        /// <summary>
+        /// Method to set radius of a Circle object
+        /// </summary>
+        /// <param name="rad">Radius</param>
         public void SetRadius(double rad)
         {
             radius = rad;
         }
 
+        /// <summary>
+        /// Method to fetch radius of a circle object
+        /// </summary>
+        /// <returns></returns>
         public double GetRadius()
         {
             return this.radius;
         }
 
+        /// <summary>
+        /// Method to Fetch Diameter of a circle object
+        /// </summary>
+        /// <returns></returns>
         public double CalcDiameter()
         {
             return (2 * radius);
         }
 
+        /// <summary>
+        /// Method to fetch Area of a circle object
+        /// </summary>
+        /// <returns></returns>
         public double CalcArea()
         {
             return (3.14 * radius * radius);
