@@ -1,0 +1,13 @@
+C:\Users\Admin\source\repos\Day02_Exc3\Day02_Exc3\bin\Debug\netcoreapp3.1\Day02_Exc3.exe
+C:\Users\Admin\source\repos\Day02_Exc3\Day02_Exc3\bin\Debug\netcoreapp3.1\Day02_Exc3.deps.json
+C:\Users\Admin\source\repos\Day02_Exc3\Day02_Exc3\bin\Debug\netcoreapp3.1\Day02_Exc3.runtimeconfig.json
+C:\Users\Admin\source\repos\Day02_Exc3\Day02_Exc3\bin\Debug\netcoreapp3.1\Day02_Exc3.runtimeconfig.dev.json
+C:\Users\Admin\source\repos\Day02_Exc3\Day02_Exc3\bin\Debug\netcoreapp3.1\Day02_Exc3.dll
+C:\Users\Admin\source\repos\Day02_Exc3\Day02_Exc3\bin\Debug\netcoreapp3.1\Day02_Exc3.pdb
+C:\Users\Admin\source\repos\Day02_Exc3\Day02_Exc3\obj\Debug\netcoreapp3.1\Day02_Exc3.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\Day02_Exc3\Day02_Exc3\obj\Debug\netcoreapp3.1\Day02_Exc3.AssemblyInfoInputs.cache
+C:\Users\Admin\source\repos\Day02_Exc3\Day02_Exc3\obj\Debug\netcoreapp3.1\Day02_Exc3.AssemblyInfo.cs
+C:\Users\Admin\source\repos\Day02_Exc3\Day02_Exc3\obj\Debug\netcoreapp3.1\Day02_Exc3.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\Day02_Exc3\Day02_Exc3\obj\Debug\netcoreapp3.1\Day02_Exc3.dll
+C:\Users\Admin\source\repos\Day02_Exc3\Day02_Exc3\obj\Debug\netcoreapp3.1\Day02_Exc3.pdb
+C:\Users\Admin\source\repos\Day02_Exc3\Day02_Exc3\obj\Debug\netcoreapp3.1\Day02_Exc3.genruntimeconfig.cache
