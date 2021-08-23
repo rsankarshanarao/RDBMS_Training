@@ -1,0 +1,237 @@
+--PRINT ASCII('S');
+DECLARE @position INT, @string CHAR(8);  
+SET @position = 1;  
+SET @string = 'New Moon';  
+WHILE @position <= DATALENGTH(@string)  
+   BEGIN  
+   SELECT ASCII(SUBSTRING(@string, @position, 1)),   
+      CHAR(ASCII(SUBSTRING(@string, @position, 1)))  
+   SET @position = @position + 1  
+   END;  
+
+PRINT  CONCAT ( 'Sankarshana ', 'Rao ', 'has EMP ID ', 20265 );
+
+PRINT LEFT('Sankarshana',5)
+
+PRINT LEN('Sankarshana')
+
+PRINT LOWER('SANKARSHANA')
+
+PRINT LTRIM('        8 spaces at beginning')
+
+PRINT REPLACE('sANkarshANa','an','00');
+
+PRINT REPLICATE('abc ',5)
+
+PRINT REVERSE('SANKARSHANA')
+
+PRINT RIGHT('SANKARSHANA', 3)
+
+PRINT RTRIM('   3spaces at right and left   ') + 'After 3 spaces'
+
+PRINT TRIM('   3 spaces at both ends   ') + 'After 3 spaces'
+
+PRINT UPPER('sankArSHana');
+
+PRINT SUBSTRING('Sankarshana', 2, 5)
+
+
+
+
+
+DECLARE @date date= '08-23-21';  
+SELECT @date AS 'DATE'
+
+DECLARE @datetime datetime= @date;
+SELECT @datetime AS 'DATETIME'
+
+DECLARE @timeFrom time(4) = '17:36:54.1237';  
+DECLARE @timeTo time(3) = @timeFrom;
+SELECT @timeTo AS 'time(3)', @timeFrom AS 'time(4)'; 
+
+PRINT SWITCHOFFSET (CONVERT(DATETIMEOFFSET,GETDATE()), '+05:30');
+
+
+SELECT DATENAME(year, '17:04:30.123')  
+    ,DATENAME(month, '02-25-2020')  
+    ,DATENAME(day, '08-23-21')  
+    ,DATENAME(dayofyear, '12:10:30.123')  
+    ,DATENAME(weekday, '12:10:30.123');  
+
+
+SELECT DATEPART(year, '17:04:30.123')  
+    ,DATEPART(month, '02-25-2020')  
+    ,DATEPART(day, '08-23-21')  
+    ,DATEPART(dayofyear, '12:10:30.123')  
+    ,DATEPART(weekday, '12:10:30.123'); 
+
+
+SELECT DATEDIFF(year,'2005-12-31 23:59:59.9999999', '2006-01-01 00:00:00.0000000'),
+		DATEDIFF(hour, '1999-02-15',GETDATE());
+
+
+SELECT DATEADD(hour, 24 ,GETDATE());
+
+IF ISDATE('2009-02-30 10:19:41.177') = 1  
+    PRINT 'VALID'  
+ELSE  
+    PRINT 'INVALID';  
+
+
+
+
+PROC
+
+--PROCEDURES
+use tcq_training1
+
+CREATE PROCEDURE AddNewDept(@deptno INT, @dname VARCHAR(50), @loc VARCHAR(50))
+AS
+BEGIN
+INSERT INTO dept VALUES(@deptno,@dname,@loc)
+END
+
+EXEC AddNewDept 50,'Training','Bangalore'
+
+CREATE PROCEDURE DelDept(@deptno INT)
+AS
+BEGIN
+DELETE FROM dept WHERE deptno = @deptno
+END
+
+EXEC DelDept 50
+
+CREATE PROCEDURE UpdateDeptLoc(@deptno INT, @newloc VARCHAR(50))
+AS
+BEGIN
+UPDATE DEPT
+SET loc = @newloc
+WHERE deptno = @deptno
+END
+
+EXEC UpdateDeptLoc 50,'Mysore'
+
+CREATE PROCEDURE GetAllEmployeeDetails
+as
+BEGIN
+SELECT empno, ename, sal, job, deptno, comm, mgr FROM emp
+END
+
+EXEC GetAllEmployeeDetails
+ 
+ -- Assignment 01
+
+ALTER PROCEDURE GetEmployeeDetailsOfDept(@deptno int)
+as
+BEGIN
+SELECT empno, ename, sal, job, comm, mgr FROM emp WHERE deptno = @deptno
+END
+
+EXEC GetEmployeeDetailsOfDept 20
+
+--declare @annsal int
+
+-- Assignment 02
+
+ALTER PROCEDURE GetEmployeeAnnualSal(@empno int)
+as
+BEGIN
+SELECT sal*12 as 'Annual Salary' FROM emp WHERE empno=@empno
+END
+
+EXEC GetEmployeeAnnualSal 7369
+
+--Assignment 03
+ALTER PROCEDURE GetEmployeeCount(@deptno INT)
+AS
+BEGIN
+SELECT COUNT(ename) AS 'Employee Count' FROM emp WHERE deptno = @deptno
+END
+
+EXEC GetEmployeeCount 20
+
+--Assignment 04
+
+CREATE PROCEDURE GetMaxAndMinSalOfDept(@deptno INT)
+AS
+BEGIN
+SELECT MAX(sal) AS 'MAX SAL', MIN(sal) AS 'MIN SAL'
+FROM emp
+WHERE deptno = @deptno
+END
+
+EXEC GetMaxAndMinSalOfDept 30
+
+
+
+FUNCTIONS
+
+
+USE tcq_training1
+
+CREATE FUNCTION GetNameByID(@empno INT)
+RETURNS VARCHAR(50)
+BEGIN
+DECLARE @name VARCHAR(50)
+SELECT @name=ename FROM emp WHERE empno = @empno
+RETURN @name
+END
+
+SELECT dbo.GetNameByID(7369)
+
+
+
+CREATE FUNCTION GetEmployeeAnnualSalFunc(@empno int)
+RETURNS INT
+BEGIN
+DECLARE @annsal int
+SELECT @annsal=(sal) FROM emp WHERE empno=@empno
+RETURN @annsal*12
+END
+
+SELECT dbo.GetEmployeeAnnualSalFunc(7369)
+
+
+
+CREATE FUNCTION GetEmployeeCountByDeptNoFunc(@deptno INT)
+RETURNS INT
+BEGIN
+DECLARE @count INT
+SELECT @count=COUNT(ename) FROM emp WHERE deptno = @deptno
+RETURN @count
+END
+
+SELECT dbo.GetEmployeeCountByDeptNoFunc(30)
+
+
+CREATE FUNCTION GetEmpByDeptFunc(@deptno INT)
+RETURNS TABLE
+AS
+RETURN(
+		SELECT * FROM emp WHERE deptno=@deptno
+		);
+
+SELECT * FROM GetEmpByDeptFunc(30)
+
+CREATE FUNCTION GetEmpByMgrID(@mgr int)
+RETURNS TABLE
+AS
+RETURN(
+		SELECT ename FROM emp WHERE mgr = @mgr
+		);
+
+SELECT * FROM GetEmpByMgrID(7902)
+
+CREATE FUNCTION GetEmpBySal(@sal int)
+RETURNS TABLE
+AS
+RETURN(
+		SELECT ename FROM emp WHERE sal > @sal
+		);
+
+SELECT * FROM GetEmpBySal(1000)
+
+
+
+
+
