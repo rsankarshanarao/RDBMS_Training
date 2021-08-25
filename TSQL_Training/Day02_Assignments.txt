@@ -1,3 +1,59 @@
+use tcq_training1
+
+ALTER TRIGGER trgInsteadOfUpdate ON emp
+INSTEAD OF UPDATE
+AS
+	DECLARE @empno INT;
+	DECLARE @newsal INT;
+	DECLARE @oldsal INT;
+	SELECT @empno=d.empno FROM deleted d;
+	SELECT @oldsal=d.sal FROM deleted d;
+	SELECT @newsal=i.sal FROM inserted i;
+	PRINT(@newsal)
+	BEGIN
+		IF(@newsal < @oldsal)
+		BEGIN
+			RAISERROR('Salary Cannot Be Updated as New Sal is lesser than Old Salary',16,1);
+		END
+		ELSE
+		BEGIN
+			UPDATE emp
+			SET sal = @newsal
+			WHERE empno = @empno
+			PRINT 'Salary Updated -- Instead of Update Trigger';
+		END
+	END
+GO
+
+SELECT * FROM emp
+
+UPDATE emp
+SET sal = 1000
+WHERE empno = 7369;
+
+
+ALTER TRIGGER trgInsteadOfDelete ON emp
+INSTEAD OF DELETE
+AS
+	DECLARE @empno INT;
+	DECLARE @date VARCHAR(20);
+	SELECT @empno=d.empno FROM deleted d;
+	SET @date = UPPER(DATENAME(weekday,GETDATE()));
+	PRINT @date
+	BEGIN
+		IF(@date='TUESDAY')
+			RAISERROR('CANNOT DELETE RECORDS ON TUESDAY',16,1);
+		ELSE
+		BEGIN
+			DELETE FROM emp WHERE empno=@empno
+			PRINT('RECORD DELETED SUCCESSFULLY -- INSTEAD OF DELETE TRIGGER')
+		END
+	END
+GO
+
+DELETE FROM EMP WHERE EMPNO = 7839
+
+
 BEGIN TRY
 DECLARE @numerator int
 DECLARE @denominator int
