@@ -1,0 +1,12 @@
+BEGIN TRY
+DECLARE @numerator int
+DECLARE @denominator int
+SET @numerator=10
+SET @denominator=0
+Print @numerator/@denominator
+END TRY
+BEGIN CATCH
+PRINT @@ERROR
+PRINT ERROR_MESSAGE()
+END CATCH
+
